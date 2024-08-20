@@ -14,16 +14,26 @@ import web3swift_zksync2
 
 public extension Web3.Utils {
     
-    static var IEthToken: String {
-        guard let path = Bundle.main.path(forResource: "IEthToken", ofType: "json") else { return "" }
+    static var IEthToken: String? {
+        guard let path = Bundle.main.path(forResource: "IEthToken", ofType: "json") else {
+            return nil
+        }
         
-        let data = try! Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-        let jsonResult = try! JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-        guard let json = jsonResult as? [String: Any], let abi = json["abi"] as? [[String: Any]] else { return "" }
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) else {
+            return nil
+        }
         
-        guard let abiData = try? JSONSerialization.data(withJSONObject: abi, options: []) else { return "" }
-        let abiString = String(data: abiData, encoding: .utf8)!
+        guard let jsonResult = try? JSONSerialization.jsonObject(with: data, options: .mutableLeaves) else {
+            return nil
+        }
         
-        return abiString
+        guard let json = jsonResult as? [String: Any], let abi = json["abi"] as? [[String: Any]] else { return nil
+        }
+        
+        guard let abiData = try? JSONSerialization.data(withJSONObject: abi, options: []) else {
+            return nil
+        }
+        
+        return String(data: abiData, encoding: .utf8)
     }
 }

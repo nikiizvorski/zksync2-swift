@@ -10,14 +10,14 @@ import BigInt
 
 public protocol ContractGasProvider {
     
-    var gasPrice: BigUInt { get }
+    var gasPrice: BigUInt? { get }
     
     var gasLimit: BigUInt { get }
 }
 
 public struct DefaultGasProvider: ContractGasProvider {
     
-    public var gasPrice: BigUInt
+    public var gasPrice: BigUInt?
     
     public var gasLimit: BigUInt
     
@@ -29,7 +29,7 @@ public struct DefaultGasProvider: ContractGasProvider {
 
 struct StaticGasProvider: ContractGasProvider {
     
-    var gasPrice: BigUInt
+    var gasPrice: BigUInt?
     
     var gasLimit: BigUInt
 }

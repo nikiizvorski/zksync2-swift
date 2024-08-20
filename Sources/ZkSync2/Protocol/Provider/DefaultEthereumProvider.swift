@@ -243,7 +243,7 @@ public class DefaultEthereumProvider: EthereumProvider {
                         refundRecipient: String) throws -> Promise<TransactionSendingResult> {
         var gasPrice = gasPrice
         if gasPrice == nil {
-            gasPrice = try! web3.eth.getGasPrice()
+            gasPrice = try web3.eth.getGasPrice()
         }
         
         guard let baseCost = try getBaseCost(gasLimit, gasPrice: gasPrice).wait()["0"] as? BigUInt else {
@@ -272,7 +272,7 @@ public class DefaultEthereumProvider: EthereumProvider {
         
         let totalValue = l2Value + baseCost + operatorTipsValue
         
-        let nonce = try! self.web3.eth.getTransactionCountPromise(address: EthereumAddress(contractAddress)!).wait()
+        let nonce = try self.web3.eth.getTransactionCountPromise(address: EthereumAddress(contractAddress)!).wait()
         
         var transactionOptions = TransactionOptions.defaultOptions
         transactionOptions.type = .legacy
@@ -697,10 +697,10 @@ public class DefaultEthereumProvider: EthereumProvider {
     //    }
     func getBaseCost(_ gasLimit: BigUInt,
                      gasPerPubdataByte: BigUInt = BigUInt(50000),
-                     gasPrice: BigUInt?) -> Promise<[String: Any]> {
+                     gasPrice: BigUInt?) throws -> Promise<[String: Any]> {
         var gasPrice = gasPrice
         if gasPrice == nil {
-            gasPrice = try! web3.eth.getGasPrice()
+            gasPrice = try web3.eth.getGasPrice()
         }
         
         let parameters = [

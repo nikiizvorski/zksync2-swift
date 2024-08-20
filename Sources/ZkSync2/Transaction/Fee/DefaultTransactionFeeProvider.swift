@@ -41,8 +41,8 @@ class DefaultTransactionFeeProvider: ZkTransactionFeeProvider {
         return feeToken
     }
     
-    var gasPrice: BigUInt {
-        return try! zkSync.web3.eth.getGasPricePromise().wait()
+    var gasPrice: BigUInt? {
+        return try? zkSync.web3.eth.getGasPricePromise().wait()
     }
     
     var gasLimit: BigUInt {

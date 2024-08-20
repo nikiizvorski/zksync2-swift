@@ -20,8 +20,8 @@ public class ZkSyncImpl: ZkSync {
     
     let transport: Transport
     
-    public init(_ providerURL: URL) {
-        self.web3 = try! Web3.new(providerURL)
+    public init(_ providerURL: URL) throws {
+        self.web3 = try Web3.new(providerURL)
         self.transport = HTTPTransport(self.web3.provider.url)
     }
     

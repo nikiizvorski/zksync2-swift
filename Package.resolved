@@ -51,7 +51,7 @@
         "repositoryURL": "https://github.com/zksync-sdk/web3swift.git",
         "state": {
           "branch": "2.6.5-zksync2",
-          "revision": "d18f523e6d121979ce7d83fa74f83bbc3ac84d54",
+          "revision": "d201bfddc481ac1926c2f7b58ac8b5f75d0118d0",
           "version": null
         }
       }

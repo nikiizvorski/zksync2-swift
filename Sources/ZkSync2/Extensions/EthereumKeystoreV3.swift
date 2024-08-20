@@ -37,17 +37,17 @@ public extension EthereumKeystoreV3 {
         return privateKey
     }
     
-    convenience init(_ privateKey: Data) {
-        try! self.init(privateKey: privateKey)!
+    convenience init(_ privateKey: Data) throws {
+        try self.init(privateKey: privateKey)!
     }
     
-    convenience init(_ privateKey: String) {
+    convenience init(_ privateKey: String) throws {
         let privatKeyData = Data(hex: privateKey)
         
-        try! self.init(privateKey: privatKeyData)!
+        try self.init(privateKey: privatKeyData)!
     }
     
-    convenience init(_ privateKey: BigUInt) {
-        self.init(privateKey.data32)
+    convenience init(_ privateKey: BigUInt) throws {
+        try self.init(privateKey.data32)
     }
 }

@@ -37,13 +37,13 @@ public class PrivateKeyEthSigner: EthSigner {
         domain = EIP712Domain(zkSyncNetwork)
     }
     
-    init(_ privateKey: String, chainId: BigUInt) {
-        credentials = Credentials(privateKey)
+    init(_ privateKey: String, chainId: BigUInt) throws {
+        credentials = try Credentials(privateKey)
         domain = EIP712Domain(chainId)
     }
     
-    init(_ privateKey: String, zkSyncNetwork: ZkSyncNetwork) {
-        credentials = Credentials(privateKey)
+    init(_ privateKey: String, zkSyncNetwork: ZkSyncNetwork) throws {
+        credentials = try Credentials(privateKey)
         domain = EIP712Domain(zkSyncNetwork)
     }
     

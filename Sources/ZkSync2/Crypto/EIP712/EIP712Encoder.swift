@@ -14,9 +14,9 @@ import web3swift
 import web3swift_zksync2
 #endif
 
-class EIP712Encoder {
+public class EIP712Encoder {
     
-    static func encodeValue(_ value: Any) -> Data {
+    public static func encodeValue(_ value: Any) -> Data {
         if let stringValue = value as? String {
             return EIP712.keccak256(stringValue)
         } else if let numericValue = value as? any Numeric {
@@ -38,7 +38,7 @@ class EIP712Encoder {
         fatalError("Unsupported type.")
     }
     
-    static func typedDataToSignedBytes(_ domain: EIP712Domain, typedData: Structurable) -> Data {
+    public static func typedDataToSignedBytes(_ domain: EIP712Domain, typedData: Structurable) -> Data {
         var outputData = Data()
         let messageEIP712Prefix = "\u{19}\u{01}"
         outputData.append(messageEIP712Prefix.data(using: .ascii)!)

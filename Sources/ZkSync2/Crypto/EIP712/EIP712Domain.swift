@@ -33,13 +33,13 @@ public class EIP712Domain: Structurable {
         self.chainId = EIP712.UInt256(chainId.rawValue)
     }
     
-    init(_ chainId: EIP712.UInt256) {
+    public init(_ chainId: EIP712.UInt256) {
         self.name = EIP712Domain.name
         self.version = EIP712Domain.version
         self.chainId = chainId
     }
     
-    init(_ name: String, version: String, chainId: EIP712.UInt256) {
+    public init(_ name: String, version: String, chainId: EIP712.UInt256) {
         self.name = name
         self.version = version
         self.chainId = chainId

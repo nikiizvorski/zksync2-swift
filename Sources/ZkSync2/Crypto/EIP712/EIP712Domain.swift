@@ -21,7 +21,7 @@ public class EIP712Domain: Structurable {
     
     public let name: String
     
-    public let version: String
+    public var version: String
     
     public let chainId: EIP712.UInt256
     
@@ -73,12 +73,16 @@ public class EIP712Domain: Structurable {
         return "EIP712Domain"
     }
     
-    public func eip712types() -> [EIP712.`Type`] {
-        var eip712types: [EIP712.`Type`] = [
-            ("name", value: name),
-            ("version", value: version),
-            ("chainId", value: chainId)
+    public func eip712types() -> [zkSync2_swift.EIP712.`Type`] {
+        var eip712types: [zkSync2_swift.EIP712.`Type`] = [
+            ("name", value: name)
         ]
+        
+        if !version.isEmpty {
+            eip712types.append(("version", value: version))
+        }
+        
+        eip712types.append(("chainId", value: chainId))
         
         if let verifyingContract = verifyingContract {
             eip712types.append(("verifyingContract", value: verifyingContract))

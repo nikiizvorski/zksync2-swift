@@ -45,7 +45,7 @@ public class EIP712Domain: Structurable {
         self.chainId = chainId
     }
     
-    public init(_ name: String, version: String, chainId: ZkSyncNetwork, address: String) {
+    init(_ name: String, version: String, chainId: ZkSyncNetwork, address: String) {
         self.name = name
         self.version = version
         self.chainId = EIP712.UInt256(chainId.rawValue)

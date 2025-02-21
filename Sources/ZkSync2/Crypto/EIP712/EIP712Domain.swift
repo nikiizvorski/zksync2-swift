@@ -19,13 +19,13 @@ public class EIP712Domain: Structurable {
     
     static let version = "2"
     
-    let name: String
+    public let name: String
     
-    let version: String
+    public let version: String
     
     public let chainId: EIP712.UInt256
     
-    var verifyingContract: EIP712.Address? = nil
+    public var verifyingContract: EIP712.Address? = nil
     
     init(_ chainId: ZkSyncNetwork) {
         self.name = EIP712Domain.name
@@ -45,7 +45,7 @@ public class EIP712Domain: Structurable {
         self.chainId = chainId
     }
     
-    init(_ name: String, version: String, chainId: ZkSyncNetwork, address: String) {
+    public init(_ name: String, version: String, chainId: ZkSyncNetwork, address: String) {
         self.name = name
         self.version = version
         self.chainId = EIP712.UInt256(chainId.rawValue)
@@ -57,7 +57,7 @@ public class EIP712Domain: Structurable {
         self.verifyingContract = ethereumAddress
     }
     
-    init(_ name: String, version: String, chainId: EIP712.UInt256, address: String) {
+    public init(_ name: String, version: String, chainId: EIP712.UInt256, address: String) {
         self.name = name
         self.version = version
         self.chainId = chainId

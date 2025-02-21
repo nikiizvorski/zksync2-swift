@@ -34,6 +34,8 @@ public class EIP712 {
     public typealias `Type` = (label: String, value: Any)
     public typealias Address = EthereumAddress
     public typealias UInt256 = BigUInt
+    public typealias UInt160 = BigUInt 
+    public typealias UInt48 = BigUInt  
     public typealias UInt = Swift.UInt
     public typealias UInt8 = Swift.UInt8
     public typealias Bytes = Data
@@ -86,6 +88,10 @@ public extension EIP712Hashable {
                 typeName = "uint8"
             case is EIP712.UInt256:
                 typeName = "uint256"
+            case is EIP712.UInt160: 
+                typeName = "uint160"
+            case is EIP712.UInt48:
+                typeName = "uint48"
             case is EIP712.Address:
                 typeName = "address"
             case is EIP712.Bytes:
@@ -132,6 +138,10 @@ public extension EIP712Hashable {
                 result = ABIEncoder.encodeSingleType(type: .uint(bits: 8), value: field as AnyObject)!
             case is EIP712.UInt256:
                 result = ABIEncoder.encodeSingleType(type: .uint(bits: 256), value: field as AnyObject)!
+            case is EIP712.UInt160: 
+                result = ABIEncoder.encodeSingleType(type: .uint(bits: 160), value: field as AnyObject)!
+            case is EIP712.UInt48: 
+                result = ABIEncoder.encodeSingleType(type: .uint(bits: 48), value: field as AnyObject)!
             case is EIP712.Address:
                 result = ABIEncoder.encodeSingleType(type: .address, value: field as AnyObject)!
             case let hashable as EIP712Hashable:
